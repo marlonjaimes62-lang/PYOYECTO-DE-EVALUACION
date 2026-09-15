@@ -1,0 +1,17 @@
+{
+  "name": "evaluacion-js",
+  "version": "1.0.0",
+  "description": "Evaluacion de consumo de la API JSONPlaceholder con Node.js",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js",
+    "check": "node --check app.js && node --check barrel.js && node --check ejercicios/tarea.js && node --check ejercicios/usuarioAlbumes.js && node --check ejercicios/postComentarios.js && node --check ejercicios/usuariosReducidos.js && node --check ejercicios/usuariosFull.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
