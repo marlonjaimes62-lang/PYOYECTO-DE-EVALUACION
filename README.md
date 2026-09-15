@@ -20,6 +20,13 @@ También se puede comprobar la sintaxis con:
 npm run check
 ```
 
+En Windows, si los acentos se muestran incorrectamente en la terminal, ejecuta antes:
+
+```powershell
+chcp 65001
+npm start
+```
+
 ## Menú
 
 1. Lista tareas pendientes agrupadas por `userId`.
@@ -40,3 +47,18 @@ Para salir, selecciona `0`.
 ## API
 
 Todos los módulos usan `fetch`, `async/await` y `try/catch`. Las peticiones múltiples se realizan con `Promise.all` para evitar esperas innecesarias. Los datos recibidos se transforman en objetos nuevos y no se mutan directamente.
+
+## Flujo Git
+
+El historial publicado contiene `main` como rama estable, `develop` como integración y una rama `feature/*` para cada ejercicio. Para continuar el flujo de trabajo:
+
+```bash
+git switch develop
+git pull --ff-only origin develop
+git switch -c feature/nueva-mejora
+git add .
+git commit -m "feat: describe la mejora"
+git push -u origin feature/nueva-mejora
+```
+
+Después de revisar la rama de funcionalidad, intégrala en `develop` y finalmente en `main` mediante un pull request.

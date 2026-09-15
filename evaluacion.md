@@ -130,4 +130,4 @@ La rama `main` representa la versión estable. `develop` integra el desarrollo y
 - `feat: agrega usuarios completos`
 - `docs: documenta evaluación y casos de prueba`
 
-El repositorio local se inicializa con esas ramas mediante los comandos indicados al final de la implementación. Para publicar en GitHub se necesita crear un repositorio público y configurar su URL remota, por ejemplo `git remote add origin https://github.com/USUARIO/evaluacion-js.git`, seguido de `git push -u origin --all`.
+El repositorio publicado contiene esas ramas y un commit descriptivo de implementación. Para continuar el flujo, los cambios deben realizarse en la rama `feature/*`, documentarse con un commit `feat: ...`, integrarse en `develop` y promoverse a `main` mediante pull request. En Windows, `chcp 65001` configura la consola en UTF-8 cuando los acentos no se muestran correctamente.
