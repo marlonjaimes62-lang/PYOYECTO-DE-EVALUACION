@@ -11,7 +11,9 @@ async function listarTareasPendientes() {
     // Convierte la respuesta JSON en un arreglo de objetos.
     const tareas = await response.json();
     // Conserva únicamente las tareas que todavía no están completadas.
-    const pendientes = tareas.filter((tarea) => tarea.completed === false);
+    const pendientes = tareas
+      .filter((tarea) => tarea.completed === false)
+      .sort((primeraTarea, segundaTarea) => primeraTarea.userId - segundaTarea.userId || primeraTarea.id - segundaTarea.id);
     // Crea un objeto nuevo sin modificar la respuesta original.
     return pendientes.reduce((porUsuario, tarea) => {
       // Inicializa el arreglo del usuario cuando aparece por primera vez.
