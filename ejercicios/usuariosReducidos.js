@@ -11,7 +11,9 @@ async function obtenerUsuariosReducidos() {
     // Convierte la respuesta en datos JavaScript.
     const usuarios = await response.json();
     // Proyecta cada usuario a un objeto nuevo e inmutable.
-    return usuarios.map(({ name, phone }) => ({ name, phone }));
+    return usuarios
+      .map(({ name, phone }) => ({ name, phone }))
+      .sort((primerUsuario, segundoUsuario) => primerUsuario.name.localeCompare(segundoUsuario.name));
   } catch (error) {
     // Devuelve al llamador un mensaje útil para la interfaz.
     throw new Error(`No se pudieron obtener los usuarios: ${error.message}`);
