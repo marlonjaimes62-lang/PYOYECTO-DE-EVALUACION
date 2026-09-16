@@ -1,6 +1,6 @@
 # Evaluación JavaScript con Node.js
 
-Proyecto académico que consume [JSONPlaceholder](https://jsonplaceholder.typicode.com/) para resolver cinco ejercicios de asincronía, transformación y composición de datos.
+Proyecto académico que consume JSONPlaceholder para resolver cinco ejercicios de asincronía, transformación y composición de datos.
 
 ## Requisitos
 
@@ -20,12 +20,6 @@ También se puede comprobar la sintaxis con:
 npm run check
 ```
 
-En Windows, si los acentos se muestran incorrectamente en la terminal, ejecuta antes:
-
-```powershell
-chcp 65001
-npm start
-```
 
 ## Menú
 
@@ -61,4 +55,4 @@ git commit -m "feat: describe la mejora"
 git push -u origin feature/nueva-mejora
 ```
 
-Después de revisar la rama de funcionalidad, intégrala en `develop` y finalmente en `main` mediante un pull request.
+

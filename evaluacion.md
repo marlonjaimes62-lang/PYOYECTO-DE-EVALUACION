@@ -120,7 +120,7 @@ obtenerUsuariosReducidos().then((resultado) => console.log(resultado[0]));
 
 ## 8. Git y ramas
 
-La rama `main` representa la versión estable. `develop` integra el desarrollo y cada rama `feature/*` corresponde a un ejercicio. Los commits recomendados son descriptivos, por ejemplo:
+La rama `main` representa la versión estable. `develop` integra el desarrollo y cada rama `feature/*` corresponde a un ejercicio. Los commits son descriptivos.
 
 - `chore: inicializa proyecto Node.js`
 - `feat: agrega listado de tareas pendientes`
@@ -130,4 +130,4 @@ La rama `main` representa la versión estable. `develop` integra el desarrollo y
 - `feat: agrega usuarios completos`
 - `docs: documenta evaluación y casos de prueba`
 
-El repositorio publicado contiene esas ramas y un commit descriptivo de implementación. Para continuar el flujo, los cambios deben realizarse en la rama `feature/*`, documentarse con un commit `feat: ...`, integrarse en `develop` y promoverse a `main` mediante pull request. En Windows, `chcp 65001` configura la consola en UTF-8 cuando los acentos no se muestran correctamente.
+
