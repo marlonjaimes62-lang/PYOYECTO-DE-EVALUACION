@@ -29,7 +29,7 @@ async function buscarUsuarioConAlbumes(nombreUsuario) {
     // Convierte las tres respuestas en arreglos.
     const [usuarios, albumes, fotos] = await Promise.all(respuestas.map((response) => response.json()));
     // Localiza al usuario sin distinguir mayúsculas de minúsculas.
-    const usuario = usuarios.find((item) => item.username.toLowerCase() === nombreNormalizado);
+    const usuario = usuarios.find((item) => item.username.toLowerCase() === nombreNormalizado || item.name.toLowerCase() === nombreNormalizado);
     // Informa claramente cuando no existe coincidencia.
     if (!usuario) return null;
     // Selecciona los álbumes pertenecientes al usuario.
