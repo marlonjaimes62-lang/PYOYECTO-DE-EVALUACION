@@ -14,16 +14,41 @@ async function obtenerUsuariosFull() {
     });
     // Convierte todas las respuestas en arreglos JSON.
     const [usuarios, posts, comentarios, albumes, fotos] = await Promise.all(respuestas.map((response) => response.json()));
+    // Indexa cada relación una sola vez para evitar filtros repetidos.
+    const postsPorUsuario = new Map();
+    const comentariosPorPost = new Map();
+    const albumesPorUsuario = new Map();
+    const fotosPorAlbum = new Map();
+    // Agrupa publicaciones por el usuario propietario.
+    posts.forEach((post) => {
+      if (!postsPorUsuario.has(post.userId)) postsPorUsuario.set(post.userId, []);
+      postsPorUsuario.get(post.userId).push(post);
+    });
+    // Agrupa comentarios por publicación.
+    comentarios.forEach((comentario) => {
+      if (!comentariosPorPost.has(comentario.postId)) comentariosPorPost.set(comentario.postId, []);
+      comentariosPorPost.get(comentario.postId).push(comentario);
+    });
+    // Agrupa álbumes por usuario.
+    albumes.forEach((album) => {
+      if (!albumesPorUsuario.has(album.userId)) albumesPorUsuario.set(album.userId, []);
+      albumesPorUsuario.get(album.userId).push(album);
+    });
+    // Agrupa fotos por álbum.
+    fotos.forEach((foto) => {
+      if (!fotosPorAlbum.has(foto.albumId)) fotosPorAlbum.set(foto.albumId, []);
+      fotosPorAlbum.get(foto.albumId).push(foto);
+    });
     // Construye una copia enriquecida de cada usuario.
     return usuarios.map((usuario) => ({
       ...usuario,
-      posts: posts.filter((post) => post.userId === usuario.id).map((post) => ({
+      posts: (postsPorUsuario.get(usuario.id) || []).map((post) => ({
         ...post,
-        comments: comentarios.filter((comentario) => comentario.postId === post.id)
+        comments: comentariosPorPost.get(post.id) || []
       })),
-      albums: albumes.filter((album) => album.userId === usuario.id).map((album) => ({
+      albums: (albumesPorUsuario.get(usuario.id) || []).map((album) => ({
         ...album,
-        photos: fotos.filter((foto) => foto.albumId === album.id)
+        photos: fotosPorAlbum.get(album.id) || []
       }))
     }));
   } catch (error) {
