@@ -29,7 +29,7 @@ async function obtenerPostsConComentarios(nombre) {
     // Convierte las respuestas en arreglos de objetos.
     const [usuarios, posts, comentarios] = await Promise.all(respuestas.map((response) => response.json()));
     // Busca al usuario por su nombre visible o nombre de usuario.
-    const usuario = usuarios.find((item) => item.name.toLowerCase() === nombreNormalizado || item.username.toLowerCase() === nombreNormalizado);
+    const usuario = usuarios.find((item) => item.name.toLowerCase().includes(nombreNormalizado) || item.username.toLowerCase().includes(nombreNormalizado));
     // Devuelve un arreglo vacío si no se encuentra el nombre solicitado.
     if (!usuario) return [];
     // Agrega únicamente los comentarios relacionados con cada publicación.
