@@ -65,7 +65,7 @@ async function iniciarAplicacion() {
   // Repite el menú hasta que el usuario seleccione 0.
   while (continuar) {
     // Presenta todas las opciones disponibles.
-    mostrarTitulo('Evaluación JavaScript - JSONPlaceholder');
+    mostrarTitulo('Evaluación JavaScript');
     console.log('1. Listar tareas pendientes por usuario');
     console.log('2. Buscar usuario y listar álbumes y fotos');
     console.log('3. Filtrar posts y agregar comentarios');
@@ -73,7 +73,7 @@ async function iniciarAplicacion() {
     console.log('5. Obtener usuarios completos');
     console.log('0. Salir');
     // Lee la opción y elimina espacios laterales.
-    const opcion = readline.question('\nSelecciona una opción: ').trim();
+    const opcion = readline.question('\nSelecciona una opcion: ').trim();
     // Sale sin hacer peticiones cuando corresponde.
     if (opcion === '0') {
       continuar = false;
